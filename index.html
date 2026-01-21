@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Music Model Samples</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1>Fine-tuning Audio Samples</h1>
+      <p class="subtle">
+        Plain comparison page: before vs after fine-tuning, random vs best picks.
+      </p>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section class="sample-section" id="blues">
+      <h2>Blues</h2>
+      <p class="prompt"><strong>Prompt:</strong> “prompt blues and fine-tuning with text embeddings”</p>
+
+      <div class="grid">
+        <figure class="card">
+          <figcaption>Before — Random</figcaption>
+          <audio controls preload="none" src="audio/blues_before_random.mp3"></audio>
+          <a class="download" href="audio/blues_before_random.mp3" download>Download</a>
+        </figure>
+
+        <figure class="card">
+          <figcaption>After — Random</figcaption>
+          <audio controls preload="none" src="audio/blues_after_random.mp3"></audio>
+          <a class="download" href="audio/blues_after_random.mp3" download>Download</a>
+        </figure>
+
+        <figure class="card">
+          <figcaption>Before — Best (hand-picked)</figcaption>
+          <audio controls preload="none" src="audio/blues_before_best.mp3"></audio>
+          <a class="download" href="audio/blues_before_best.mp3" download>Download</a>
+        </figure>
+
+        <figure class="card">
+          <figcaption>After — Best (hand-picked)</figcaption>
+          <audio controls preload="none" src="audio/blues_after_best.mp3"></audio>
+          <a class="download" href="audio/blues_after_best.mp3" download>Download</a>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="sample-section" id="chopin">
+      <h2>Chopin</h2>
+      <p class="prompt"><strong>Prompt:</strong> “Chopin nocturne-style solo piano, expressive rubato”</p>
+
+      <div class="grid">
+        <figure class="card">
+          <figcaption>Before — Random</figcaption>
+          <audio controls preload="none" src="audio/chopin_before_random.mp3"></audio>
+          <a class="download" href="audio/chopin_before_random.mp3" download>Download</a>
+        </figure>
+
+        <figure class="card">
+          <figcaption>After — Random</figcaption>
+          <audio controls preload="none" src="audio/chopin_after_random.mp3"></audio>
+          <a class="download" href="audio/chopin_after_random.mp3" download>Download</a>
+        </figure>
+
+        <figure class="card">
+          <figcaption>Before — Best (hand-picked)</figcaption>
+          <audio controls preload="none" src="audio/chopin_before_best.mp3"></audio>
+          <a class="download" href="audio/chopin_before_best.mp3" download>Download</a>
+        </figure>
+
+        <figure class="card">
+          <figcaption>After — Best (hand-picked)</figcaption>
+          <audio controls preload="none" src="audio/chopin_after_best.mp3"></audio>
+          <a class="download" href="audio/chopin_after_best.mp3" download>Download</a>
+        </figure>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <p class="subtle">Last updated: <span id="last-updated"></span></p>
+    </footer>
+  </main>
+
+  <script>
+    // Tiny convenience: shows today's date automatically (optional).
+    document.getElementById("last-updated").textContent = new Date().toISOString().slice(0, 10);
+  </script>
+</body>
+</html>

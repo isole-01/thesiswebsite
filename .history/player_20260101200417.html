@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Audio player</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 24px auto; padding: 0 16px; }
+    .meta { margin-top: 16px; }
+    dt { font-weight: 600; }
+    dd { margin: 0 0 12px 0; }
+    code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <!-- <h1 id="title">Audio</h1> -->
+
+  <audio id="player" controls preload="metadata" style="width:100%"></audio>
+
+  <div class="meta">
+    <dl>
+      <dt>Prompt</dt><dd id="prompt">—</dd>
+      <dt>Model</dt><dd id="model">—</dd>
+      <dt>Finetuned rewards</dt><dd id="rewards">—</dd>
+    </dl>
+  </div>
+
+  <!-- <p><a href="index.html">← Back to article</a></p> -->
+
+  <script>
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    function fmt(v) {
+      if (v === null || v === undefined || v === "" || v === "None") return "—";
+      if (Array.isArray(v)) {
+        const cleaned = v.map(x => (x === null || x === undefined) ? "—" : String(x));
+        return cleaned.join(", ");
+      }
+      return String(v);
+    }
+
+    const id = getParam("id");
+    if (!id) {
+      document.getElementById("title").textContent = "Missing ?id=...";
+      document.getElementById("prompt").textContent = "Add a link like player.html?id=blues_001";
+      throw new Error("Missing id");
+    }
+
+    document.getElementById("title").textContent = id;
+
+    // Pick extension. Option A: assume mp3 first, fall back to wav.
+    const player = document.getElementById("player");
+    const audioMp3 = `audio/${id}.mp3`;
+    const audioWav = `audio/${id}.wav`;
+
+    async function setAudioSrc() {
+      // try mp3, then wav
+      const r1 = await fetch(audioMp3, { method: "HEAD" }).catch(() => null);
+      if (r1 && r1.ok) { player.src = audioMp3; return; }
+      const r2 = await fetch(audioWav, { method: "HEAD" }).catch(() => null);
+      if (r2 && r2.ok) { player.src = audioWav; return; }
+      document.getElementById("prompt").textContent = "Audio file not found.";
+    }
+
+    async function loadMeta() {
+      const metaUrl = `audio/${id}.json`;
+      const res = await fetch(metaUrl);
+      if (!res.ok) throw new Error(`Metadata not found: ${metaUrl}`);
+      const meta = await res.json();
+
+      document.getElementById("prompt").textContent = fmt(meta.prompt);
+      document.getElementById("model").textContent  = fmt(meta.model);
+      document.getElementById("rewards").textContent = fmt(meta.finetuned_rewards);
+
+      // Optional: try to autoplay. Many browsers block autoplay unless user gesture.
+      // If it fails, user can click play.
+      try { await player.play(); } catch (e) {}
+    }
+
+    (async () => {
+      await setAudioSrc();
+      await loadMeta();
+    })().catch(err => {
+      document.getElementById("prompt").textContent = "Error loading metadata.";
+      console.error(err);
+    });
+  </script>
+</body>
+</html>
