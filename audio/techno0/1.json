@@ -1,0 +1,5 @@
+{
+  "prompt": "techno",
+  "model": "MIDI-LLM",
+  "finetuned_rewards": [null]
+}
