@@ -1,0 +1,5 @@
+{
+  "prompt": "blues",
+  "finetuned_rewards": ["text-alignment", "aesthetic preference"],
+  "clips": ["160_7", "160_6", "160_5", "160_4"]
+}

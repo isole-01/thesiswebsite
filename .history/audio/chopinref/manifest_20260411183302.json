@@ -1,0 +1,10 @@
+{
+  "prompt": "No prompt; These are actual Chopin Preludes.",
+  "finetuned_rewards": [""],
+  "clips": ["Prelude Op. 28 no. 1",
+   "Prelude Op. 28 no. 10",
+    "Prelude Op. 28 no. 12", 
+    "Prelude Op. 28 no. 17",
+    "Prelude-in-e-minor"
+]
+}

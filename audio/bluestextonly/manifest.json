@@ -1,1 +1,5 @@
-["bluestextonly","bluestextonly3","bluestextonly2"]
+{
+  "prompt": "blues piano",
+  "finetuned_rewards": ["text-alignment"],
+  "clips": ["bluestextonly", "bluestextonly2", "bluestextonly3"]
+}
