@@ -1,0 +1,5 @@
+{
+  "prompt": "blues",
+  "finetuned_rewards": [""],
+  "clips": ["blues1", "blues2", "blues3", "blues4"]
+}
