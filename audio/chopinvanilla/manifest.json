@@ -1,5 +1,5 @@
 {
   "prompt": "chopin romantic classical piano",
-  "finetuned_rewards": ["Not trained"],
+  "finetuned_rewards": [""],
   "clips": ["1", "2", "3", "4"]
 }

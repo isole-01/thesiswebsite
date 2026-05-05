@@ -1,5 +1,5 @@
 {
   "prompt": "blues piano",
   "finetuned_rewards": ["text-alignment", "aesthetic preference", "audio-reference"],
-  "clips": ["160_1", "160_2", "160_0"]
+  "clips": ["160_1", "160_2", "160_3"]
 }

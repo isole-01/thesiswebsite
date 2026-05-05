@@ -1,0 +1,5 @@
+{
+  "prompt": "chopin romantic classical piano",
+  "finetuned_rewards": ["text-alignment", "aesthetic preference", "audio reference"],
+  "clips": ["11", "12", "13", "14"]
+}
